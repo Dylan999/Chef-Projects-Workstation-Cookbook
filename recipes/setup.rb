@@ -13,7 +13,12 @@ package 'ntp' do
 end
 
 file '/etc/motd' do
- content 'This server belongs to Dylan, go away'
+ content "This server belongs to Dylan, the stats for this machine are
+ HOSTNAME: #{node['hostname']}
+ IPADDRESS: #{node['ipaddress']} 
+ CPU: #{node['cpu']['0']['mhz']}
+ MEMORY: #{node['memory']['total']}
+"
  action :create
  owner 'root'
  group 'root'
